@@ -1,0 +1,351 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+/* Navbar */
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-house-crack {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;  
+}
+
+/* Footer */
+.f-info-links a {
+    text-decoration: none;
+    color: #222222 !important;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-links, .f-info-socials, .f-info-brand {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    display: flex;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/* Cards */
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text p {
+    font-weight: 400 !important;
+}
+
+.listing-link {
+    text-decoration: none !important;
+}
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* Ensure cards have a margin */
+.card {
+    margin-bottom: 2rem; /* Space below each card */
+}
+
+.row {
+    margin: 0; /* Remove default margins if necessary */
+}
+
+.col {
+    padding: 0.5rem; /* Add padding around each column */
+}
+
+.card {
+    border: none !important; /* Ensures border is removed */
+    box-shadow: none; /* Remove shadow if present */
+}
+
+.add-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* Specific to Show Page */
+.show-img {
+    width: 100%;
+    max-width: 600px;
+    max-height: 400px; /* Ensure the image doesn't occupy more height */
+    height: auto;
+    border-radius: 1.5rem !important; /* Increased border radius */
+    object-fit: cover;
+    margin-bottom: 1rem; /* Add space below the image */
+}
+
+.rounded-img {
+    border-radius: 1.5rem; /* Increased border radius */
+}
+
+/* Button Group */
+.btn-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-group .btn {
+    margin: 0;
+}
+
+/* Add this to your style.css or another relevant stylesheet */
+
+.search-results {
+    position: absolute; /* Ensure it does not affect the layout */
+    top: 100%; /* Position below the search input */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Make sure it appears above other content */
+    max-height: 300px; /* Limit the height to avoid overflow issues */
+    overflow-y: auto; /* Add scroll if needed */
+    background-color: white; /* Background color for better visibility */
+    border: 1px solid #ddd; /* Border to define the container */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .listing-result {
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Add separation between results */
+  }
+  
+  .listing-result:last-child {
+    border-bottom: none; /* Remove border from the last item */
+  }
+  
+  .search-results p {
+    margin: 0; /* Remove default margin from paragraphs */
+  }
+  
+
+
+
+ /* map */
+ #map
+  {
+     height: 400px;
+     width: 80vh;
+     }
+
+     .map-container {
+        margin-bottom: 2rem; /* Adjust the margin as needed */
+    }
+
+ /* Fields */
+ #filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* Center items horizontally */
+}
+
+.filter {
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    opacity: 0.7;
+    flex: 0 0 auto;
+    /* Flex item will only take as much space as it needs */
+}
+
+.filter:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.filter p {
+    font-size: 0.8rem;
+}
+
+/* Small screens */
+@media (max-width: 576px) {
+    #filters {
+        flex-direction: column;
+    }
+
+    .filter {
+        flex: 0 0 100%;
+        /* Full width on small screens */
+        margin-right: 0;
+    }
+
+    .tax-toggle {
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: center;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 576px) and (max-width: 768px) {
+    .filter {
+        flex: 0 0 48%;
+        /* Half-width on medium screens */
+        margin-right: 0.5rem;
+    }
+
+    .tax-toggle {
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+    }
+}
+
+/* Large screens */
+@media (min-width: 768px) and (max-width: 992px) {
+    .filter {
+        flex: 0 0 30%;
+        /* Adjust width on slightly larger screens */
+        margin-right: 1rem;
+    }
+
+    .tax-toggle {
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+    }
+}
+
+/* Extra large screens */
+@media (min-width: 992px) {
+    .filter {
+        flex: 0 0 auto;
+        /* Filters take only the necessary space */
+        margin-right: 2rem;
+    }
+
+    .tax-toggle {
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+    }
+}
+
+/* Taxes */
+.tax-info {
+    display: none;
+}
+
+.tax-toggle {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3.25rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    width: fit-content;
+}
+
+.filter a {
+    color: inherit;
+    /* Inherit color from parent */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+
+
+/* Default (light) theme */
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Dark theme */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.card.dark-mode {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.filter.dark-mode i,
+.filter.dark-mode p {
+    color: #ffffff;
+}
+
+.tax-toggle.dark-mode {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+/* Add any other elements that need to change for dark mode */
+
+.search-btn{
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+   }
+ 
+   .search-btn:hover{
+    background-color: #fe424d;
+    color: #fff;
+   }
+ 
+   .search-btn i {
+     display: inline;
+     margin-right: 0.5rem;
+   }
+ 
+   .search-input{
+     border-radius: 25px;
+     padding: 0.5rem 3rem 0.5rem 3rem;
+     font-size: 1rem;
+   }
+    

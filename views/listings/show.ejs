@@ -1,0 +1,136 @@
+<% layout("/layouts/boilerplate") %>
+
+<script>
+    const mapToken = '<%= mapToken %>';
+    const listing = <%- JSON.stringify(listing) %>; // Serialize the listing object
+</script>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h3><%= listing.title %></h3>
+            <img src="<%= listing.image.url %>" alt="<%= listing.title %>" class="show-img rounded-img">
+            
+            <!-- Display owner's username in italics -->
+            <% if (listing.owner) { %>
+                <p><em>Owner: <%= listing.owner.username %></em></p>
+            <% } else { %>
+                <p><em></em></p>
+            <% } %>
+
+            <p><%= listing.description %></p>
+            <p><strong>Price:</strong> &#8377; <%= listing.price.toLocaleString("en-IN") %> / night</p>
+            <p><strong>Location:</strong> <%= listing.location %>, <%= listing.country %></p>
+            
+            <!-- Edit and Delete Buttons -->
+            <% if(currUser && listing.owner && listing.owner._id.equals(currUser._id)) { %>
+            <div class="btn-group">
+                <a href="/listings/<%= listing._id %>/edit" class="btn btn-warning">Edit</a>
+                <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" class="d-inline">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+            <% } %>
+        
+        </div>
+    </div>
+
+    <!-- Add Review Form -->
+    <% if(currUser) { %>
+    <div class="row mt-4">
+        <div class="col-8 offset-2">
+            <h4>Add a Review</h4>
+            <form method="POST" action="/listings/<%= listing._id %>/reviews" novalidate class="review-form needs-validation" id="reviewForm">
+                <div class="mb-3">
+
+                    <fieldset class="starability-growRotate">
+                        <input type="radio" id="no-rate" class="input-no-rate" 
+                               name="review[rating]" value="1" checked aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                      </fieldset>
+                    
+                </div>
+                  
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Comment</label>
+                    <textarea name="review[comment]" id="comment" class="form-control" required></textarea>
+                    <div class="invalid-feedback">Please enter a comment.</div>
+                </div>
+                <button class="btn btn-dark" type="submit">Submit Review</button>
+            </form>
+        </div>
+    </div>
+    <% } %>
+
+    <!-- Reviews Section -->
+     <% if(listing.reviews.length > 0 ) {%> 
+    <div class="row mt-4 review-section">
+        <div class="col-8 offset-2">
+            <h4>Reviews</h4>
+            <div class="review-scroll-container">
+                <div class="row">
+                    <% if (listing.reviews.length) { %>
+                        <% listing.reviews.forEach((review, index) => { %>
+                            <div class="col-md-6 mb-3 review-card">
+                                <h5 class="card-title">@<%= review.author.username %></h5>
+                                <p class="starability-result" data-rating="<%= review.rating %>" ></p>
+                                <h5>Rating: <%= review.rating %> / 5</h5>
+                                
+                                <p>Comment: <%= review.comment %></p>
+                                <p><small class="text-muted">Posted on <%= review.createdAt.toDateString() %></small></p>
+                                <% if(currUser && review.author && review.author._id.equals(currUser._id)) { %>
+                                    <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                <% } %>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <div class="col-12">
+                            <div class="alert alert-info">No reviews yet.</div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <% } %>
+    <div class="col-8 offset-2 map-container">
+        <h3>Where you’ll be</h3>
+        <div id="map"></div>
+    </div>
+    
+</div>
+
+<script src="/js/map.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

@@ -1,0 +1,86 @@
+.review-section {
+    margin-top: 2rem;
+}
+
+.review-list {
+    list-style-type: none;
+    padding: 0;
+    max-height: 300px; /* Set the desired height for the reviews box */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd; /* Add a border to the reviews box */
+    padding: 1rem; /* Add some padding inside the box */
+    border-radius: 0.5rem; /* Add rounded corners */
+    background-color: #f9f9f9; /* Set a background color */
+}
+
+.review-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.review-item p {
+    margin: 0;
+}
+
+.review-item small {
+    color: #6c757d;
+}
+
+.review-form .form-control {
+    margin-bottom: 1rem;
+}
+
+.review-form .invalid-feedback {
+    display: none;
+}
+
+.review-form .form-control:invalid ~ .invalid-feedback {
+    display: block;
+}
+
+.review-scroll-container {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: auto;
+    padding-right: 1rem; /* Add some padding to the right for better scroll visibility */
+}
+
+
+/* Styles for the review section */
+.review-section {
+    margin-top: 1rem;
+}
+
+.review-scroll-container {
+    max-height: 400px; /* Adjust this value as needed */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.review-card {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.review-card h5 {
+    margin-top: 0;
+}
+
+.review-card .card-text {
+    margin-bottom: 0.5rem;
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: black;
+}

@@ -1,0 +1,155 @@
+<% layout("/layouts/boilerplate") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - FindAStay</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 0.25rem;
+            border-color: #ced4da;
+        }
+
+        .form-control:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            border-radius: 0.25rem;
+            padding: 0.75rem 1.25rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #004085;
+            border-color: #003768;
+        }
+
+        .invalid-feedback {
+            display: block;
+            font-size: 0.875rem;
+            color: #000; /* Black color */
+        }
+
+        .invalid-feedback.hidden {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-5 {
+            margin-top: 3rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1.5rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .card {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm">
+                    <h1 class="text-center mb-4">Sign Up on FindAStay</h1>
+                    <form action="/signup" method="post" novalidate class="needs-validation">
+                        <div class="mb-4">
+                            <label for="username" class="form-label">Username</label>
+                            <input 
+                                name="username"
+                                placeholder="Enter your username" 
+                                id="username"
+                                type="text"
+                                class="form-control"
+                                required
+                            />
+                            <div class="invalid-feedback" id="username-feedback">Please provide a username.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="email" class="form-label">Email</label>
+                            <input 
+                                name="email"
+                                placeholder="Enter your email" 
+                                id="email"
+                                type="email"
+                                class="form-control"
+                                required
+                            />
+                            <div class="invalid-feedback" id="email-feedback">Please provide a valid email.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="password" class="form-label">Password</label>
+                            <input 
+                                name="password"
+                                placeholder="Enter your password" 
+                                id="password"
+                                type="password"
+                                class="form-control"
+                                required
+                            />
+                            <div class="invalid-feedback" id="password-feedback">Please provide a password.</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                        
+                        <p class="text-center mt-3">
+                            Already have an account? <a href="/login">Log In</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var inputs = document.querySelectorAll('.form-control');
+            
+            inputs.forEach(function(input) {
+                input.addEventListener('input', function() {
+                    var feedback = document.querySelector('#' + input.id + '-feedback');
+                    if (input.value.trim() !== '') {
+                        feedback.classList.add('hidden');
+                    } else {
+                        feedback.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

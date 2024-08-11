@@ -1,0 +1,108 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <h3>Edit your Listing</h3>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+            
+            <!-- Title Field -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input 
+                    name="listing[title]" 
+                    value="<%= listing.title %>" 
+                    placeholder="Add a Title" 
+                    type="text"
+                    class="form-control"
+                    required
+                />
+                <div class="valid-feedback">Title looks good!</div>
+            </div>
+            
+            <!-- Description Field -->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                    name="listing[description]"
+                    placeholder="Enter description"
+                    class="form-control"
+                    required
+                ><%= listing.description %></textarea>
+                <div class="invalid-feedback">Please enter a short description!</div>
+            </div>
+
+            <div>
+                Original Image<br>
+                <img src="<%= originalImageUrl %>" alt="Listing Image" style="height: 300px; object-fit: cover; width: 25rem; border-radius: 2%;">
+            </div>
+            
+            <!-- Image Upload Field -->
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Image</label>
+                <input type="file" name="listing[image]" class="form-control" />
+                <div class="invalid-feedback">Image should be valid!</div>
+            </div>
+            <input type="hidden" name="listing[image][filename]" value="<%= listing.image.filename || '' %>">
+            
+            <!-- Price and Country Fields -->
+            <div class="row mb-3">
+                <div class="col-4">
+                    <label for="price" class="form-label">Price</label>
+                    <input 
+                        name="listing[price]"
+                        value="<%= listing.price %>" 
+                        placeholder="ex-1200" 
+                        class="form-control" 
+                        required 
+                    />
+                    <div class="invalid-feedback">Price should be valid!</div>
+                </div>
+                <div class="col-8">
+                    <label for="country" class="form-label">Country</label>
+                    <input 
+                        name="listing[country]" 
+                        value="<%= listing.country %>" 
+                        placeholder="ex-India" 
+                        type="text" 
+                        class="form-control" 
+                        required 
+                    />
+                    <div class="invalid-feedback">Country name should be valid!</div>
+                </div>
+            </div>
+            
+            <!-- Location Field -->
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input
+                    name="listing[location]"
+                    value="<%= listing.location %>"
+                    placeholder="ex-pune"
+                    type="text" class="form-control" />
+            </div>
+
+            <!-- Category Field -->
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select name="listing[category]" id="category" class="form-control" required>
+                    <option value="">Select a category</option>
+                    <option value="Trending" <%=listing.category==='Trending' ? 'selected' : '' %>>Trending</option>
+                    <option value="Rooms" <%=listing.category==='Rooms' ? 'selected' : '' %>>Rooms</option>
+                    <option value="Cities" <%=listing.category==='Cities' ? 'selected' : '' %>>Cities</option>
+                    <option value="Mountains" <%=listing.category==='Mountains' ? 'selected' : '' %>>Mountains</option>
+                    <option value="Castles" <%=listing.category==='Castles' ? 'selected' : '' %>>Castles</option>
+                    <option value="Amazing Pools" <%=listing.category==='Amazing Pools' ? 'selected' : '' %>>Amazing Pools</option>
+                    <option value="Camping" <%=listing.category==='Camping' ? 'selected' : '' %>>Camping</option>
+                    <option value="Arctic" <%=listing.category==='Arctic' ? 'selected' : '' %>>Arctic</option>
+                    <option value="Farm" <%=listing.category==='Farm' ? 'selected' : '' %>>Farm</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="btn btn-dark edit-btn">Edit</button>
+        </form>
+    </div>
+</div>
+
+<!-- External JS Script -->
+<script src="/js/script.js"></script>
