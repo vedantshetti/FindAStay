@@ -1,9 +1,7 @@
 {
-  "engines":{
-      "node":"20.15.1"
-    },
-
-
+  "engines": {
+    "node": "20.15.1"
+  },
   "name": "findastay2",
   "version": "1.0.0",
   "main": "index.js",
@@ -16,7 +14,7 @@
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.16.0",
     "bcryptjs": "^2.4.3",
-    "cloudinary": "^2.4.0",
+    "cloudinary": "^1.21.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^5.1.0",
     "cookie-parser": "^1.4.6",
