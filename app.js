@@ -18,19 +18,25 @@ const listingRoutes = require("./routes/listing");
 const reviewRoutes = require("./routes/review");
 const userRoutes = require("./routes/user");
 
-const dbURL = process.env.ATLASDB_URL;
+
+const  dbURL = process.env.ATLASDB_URL;
 
 main()
-  .then(() => {
-    console.log("connected to DB");
+  .then(() =>{
+    console.log("connected to DB")
   })
-  .catch((err) => {
+   .catch((err) =>{
     console.log(err);
-  });
+   });
+
+
 
 async function main() {
-  await mongoose.connect(dbURL);
+    // await mongoose.connect(MONGO_URL);
+    await mongoose.connect(dbURL);
 }
+
+
 
 // Set up EJS and Views Directory
 app.engine("ejs", ejsMate);
@@ -42,17 +48,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
-const store = MongoStore.create({
-  mongoUrl: dbURL,
-  crypto: {
-    secret: process.env.SECRET,
-    touchAfter: 24 * 3600,
-  }
-});
 
-store.on("error", (err) => {
-  console.log("ERROR IN MONGO SESSION STORE", err);
-});
+
+
+const store= MongoStore.create({
+  mongoUrl: dbURL,
+  crypto:{
+    secret:process.env.SECRET,
+    touchAfter:24*3600,
+
+  }
+})
+
+
+
+store.on("error",()=>{
+  console.log("ERROR IN MONGO SESSION STORE",err)
+})
+
 
 // Session and Flash Configuration
 const sessionOptions = {
@@ -66,6 +79,14 @@ const sessionOptions = {
     httpOnly: true,
   }
 };
+
+
+
+
+
+
+
+
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -85,24 +106,27 @@ app.use((req, res, next) => {
   next();
 });
 
-// Redirect root route to /listings
-app.get("/", (req, res) => {
-  res.redirect("/listings");
-});
+// Favicon Handling
+// app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 // Routes
+app.get("/", (req, res) => {
+  res.redirect('/listings');  // Render a homepage template
+});
+
 app.use("/listings", listingRoutes);
 app.use("/listings/:id/reviews", reviewRoutes);
 app.use("/", userRoutes);
 
 // Catch-all Route for 404 Errors
 app.all("*", (req, res, next) => {
-  next(new ExpressError("Page Not Found", 404));
+  next(new ExpressError("Page Not Found", 404));  // Create a new error with status code 404
 });
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong!" } = err;
+
   res.status(statusCode).render('error', { message });
 });
 
