@@ -1,6 +1,6 @@
-# FindAStay
-
 ![Screenshot (81)](https://github.com/user-attachments/assets/1e2e5bc2-97fb-43c9-a013-a5f475c0b5a0)
+
+# FindAStay
 
 
 ## Description
