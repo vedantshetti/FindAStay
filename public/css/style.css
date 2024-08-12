@@ -1,8 +1,11 @@
+/* Default Styles */
 body {
     font-family: "Plus Jakarta Sans", sans-serif !important;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .container {
@@ -39,6 +42,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .f-info-socials i {
@@ -53,7 +57,7 @@ body {
     background-color: #ebebeb;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: space-evenly;
+    align-items: center;
 }
 
 /* Cards */
@@ -91,20 +95,20 @@ body {
 
 /* Ensure cards have a margin */
 .card {
-    margin-bottom: 2rem; /* Space below each card */
+    margin-bottom: 2rem;
 }
 
 .row {
-    margin: 0; /* Remove default margins if necessary */
+    margin: 0;
 }
 
 .col {
-    padding: 0.5rem; /* Add padding around each column */
+    padding: 0.5rem;
 }
 
 .card {
-    border: none !important; /* Ensures border is removed */
-    box-shadow: none; /* Remove shadow if present */
+    border: none !important;
+    box-shadow: none;
 }
 
 .add-btn {
@@ -116,15 +120,15 @@ body {
 .show-img {
     width: 100%;
     max-width: 600px;
-    max-height: 400px; /* Ensure the image doesn't occupy more height */
+    max-height: 400px;
     height: auto;
-    border-radius: 1.5rem !important; /* Increased border radius */
+    border-radius: 1.5rem !important;
     object-fit: cover;
-    margin-bottom: 1rem; /* Add space below the image */
+    margin-bottom: 1rem;
 }
 
 .rounded-img {
-    border-radius: 1.5rem; /* Increased border radius */
+    border-radius: 1.5rem;
 }
 
 /* Button Group */
@@ -137,55 +141,49 @@ body {
     margin: 0;
 }
 
-/* Add this to your style.css or another relevant stylesheet */
-
+/* Search Results */
 .search-results {
-    position: absolute; /* Ensure it does not affect the layout */
-    top: 100%; /* Position below the search input */
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
-    z-index: 1000; /* Make sure it appears above other content */
-    max-height: 300px; /* Limit the height to avoid overflow issues */
-    overflow-y: auto; /* Add scroll if needed */
-    background-color: white; /* Background color for better visibility */
-    border: 1px solid #ddd; /* Border to define the container */
-    border-radius: 4px; /* Rounded corners */
-  }
-  
-  .listing-result {
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.listing-result {
     padding: 10px;
-    border-bottom: 1px solid #ddd; /* Add separation between results */
-  }
-  
-  .listing-result:last-child {
-    border-bottom: none; /* Remove border from the last item */
-  }
-  
-  .search-results p {
-    margin: 0; /* Remove default margin from paragraphs */
-  }
-  
+    border-bottom: 1px solid #ddd;
+}
 
+.listing-result:last-child {
+    border-bottom: none;
+}
 
+.search-results p {
+    margin: 0;
+}
 
- /* map */
- #map
-  {
-     height: 400px;
-     width: 80vh;
-     }
+/* Map */
+#map {
+    height: 400px;
+    width: 100%;
+}
 
-     .map-container {
-        margin-bottom: 2rem; /* Adjust the margin as needed */
-    }
+.map-container {
+    margin-bottom: 2rem;
+}
 
- /* Fields */
- #filters {
+/* Filters */
+#filters {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    /* Center items horizontally */
 }
 
 .filter {
@@ -194,7 +192,6 @@ body {
     margin-top: 1rem;
     opacity: 0.7;
     flex: 0 0 auto;
-    /* Flex item will only take as much space as it needs */
 }
 
 .filter:hover {
@@ -214,7 +211,6 @@ body {
 
     .filter {
         flex: 0 0 100%;
-        /* Full width on small screens */
         margin-right: 0;
     }
 
@@ -229,7 +225,6 @@ body {
 @media (min-width: 576px) and (max-width: 768px) {
     .filter {
         flex: 0 0 48%;
-        /* Half-width on medium screens */
         margin-right: 0.5rem;
     }
 
@@ -244,7 +239,6 @@ body {
 @media (min-width: 768px) and (max-width: 992px) {
     .filter {
         flex: 0 0 30%;
-        /* Adjust width on slightly larger screens */
         margin-right: 1rem;
     }
 
@@ -259,7 +253,6 @@ body {
 @media (min-width: 992px) {
     .filter {
         flex: 0 0 auto;
-        /* Filters take only the necessary space */
         margin-right: 2rem;
     }
 
@@ -289,12 +282,8 @@ body {
 
 .filter a {
     color: inherit;
-    /* Inherit color from parent */
     text-decoration: none;
-    /* Remove underline */
 }
-
-
 
 /* Default (light) theme */
 body {
@@ -324,28 +313,26 @@ body.dark-mode {
     border: 1px solid #ffffff;
 }
 
-/* Add any other elements that need to change for dark mode */
-
-.search-btn{
+/* Search Button */
+.search-btn {
     background-color: #fe424d;
     color: #fff;
     border-radius: 25px;
-    padding: 0 1rem 0 1rem;
-   }
- 
-   .search-btn:hover{
+    padding: 0 1rem;
+}
+
+.search-btn:hover {
     background-color: #fe424d;
     color: #fff;
-   }
- 
-   .search-btn i {
-     display: inline;
-     margin-right: 0.5rem;
-   }
- 
-   .search-input{
-     border-radius: 25px;
-     padding: 0.5rem 3rem 0.5rem 3rem;
-     font-size: 1rem;
-   }
-    
+}
+
+.search-btn i {
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.search-input {
+    border-radius: 25px;
+    padding: 0.5rem 3rem;
+    font-size: 1rem;
+}
