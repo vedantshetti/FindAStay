@@ -1,0 +1,65 @@
+/* CSS for Sidebar (style.css or a separate CSS file) */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    padding-top: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .rating-fieldset {
+    margin: 15px;
+    color: #f1f1f1;
+}
+
+.sidebar .rating-fieldset input[type="radio"] {
+    display: none;
+}
+
+.sidebar .rating-fieldset label {
+    cursor: pointer;
+    color: #f1f1f1;
+    font-size: 18px;
+}
+
+.sidebar .rating-fieldset input[type="radio"]:checked ~ label {
+    color: gold;
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .sidebar a {
+        float: left;
+        width: 100%;
+    }
+
+    .sidebar .rating-fieldset {
+        margin: 10px;
+    }
+}

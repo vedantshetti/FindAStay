@@ -1,90 +1,92 @@
 <% layout("/layouts/boilerplate") %>
 
 <!-- Filters Section -->
-<div id="filters" class="d-flex flex-wrap justify-content-around mb-4">
-    <div class="filter">
-        <a href="/listings/category/Trending" class="filter-link">
-            <i class="fa-solid fa-fire"></i>
-            <p>Trending</p>
-        </a>
-    </div>
-    <div class="filter">
-        <a href="/listings/category/Rooms" class="filter-link">
-            <i class="fa-solid fa-bed"></i>
-            <p>Rooms</p>
-        </a>
-    </div>
-    <div class="filter">
-        <a href="/listings/category/Cities" class="filter-link">
-            <i class="fa-solid fa-city"></i>
-            <p>Cities</p>
-        </a>
-    </div>
-    <div class="filter">
-        <a href="/listings/category/Mountains" class="filter-link">
-            <i class="fa-solid fa-mountain"></i>
-            <p>Mountains</p>
-        </a>
-    </div>
-    <div class="filter">
-        <a href="/listings/category/Castles" class="filter-link">
-            <i class="fa-brands fa-fort-awesome"></i>
-            <p>Castles</p>
-        </a>
-    </div>
-    <div class="filter">
-        <a href="/listings/category/Amazing Pools" class="filter-link">
-            <i class="fa-solid fa-person-swimming"></i>
-            <p>Amazing Pools</p>
-        </a>
-    </div>
-    <div class="filter">
-        <a href="/listings/category/Camping" class="filter-link">
-            <i class="fa-solid fa-campground"></i>
-            <p>Camping</p>
-        </a>
-    </div>
-    <div class="filter">
-        <a href="/listings/category/Arctic" class="filter-link">
-            <i class="fa-regular fa-snowflake"></i>
-            <p>Arctic</p>
-        </a>
-    </div>
-    <div class="filter">
-        <a href="/listings/category/Farm" class="filter-link">
-            <i class="fa-solid fa-cow"></i>
-            <p>Farm</p>
-        </a>
-    </div>
-    <div class="tax-toggle mt-3">
-        <div class="form-check-reverse form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+<div id="filters-container">
+    <div id="filters" class="d-flex mb-4">
+        <div class="filter">
+            <a href="/listings/category/Trending" class="filter-link">
+                <i class="fa-solid fa-fire"></i>
+                <p>Trending</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/category/Rooms" class="filter-link">
+                <i class="fa-solid fa-bed"></i>
+                <p>Rooms</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/category/Cities" class="filter-link">
+                <i class="fa-solid fa-city"></i>
+                <p>Cities</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/category/Mountains" class="filter-link">
+                <i class="fa-solid fa-mountain"></i>
+                <p>Mountains</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/category/Castles" class="filter-link">
+                <i class="fa-brands fa-fort-awesome"></i>
+                <p>Castles</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/category/Amazing Pools" class="filter-link">
+                <i class="fa-solid fa-person-swimming"></i>
+                <p>Amazing Pools</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/category/Camping" class="filter-link">
+                <i class="fa-solid fa-campground"></i>
+                <p>Camping</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/category/Arctic" class="filter-link">
+                <i class="fa-regular fa-snowflake"></i>
+                <p>Arctic</p>
+            </a>
+        </div>
+        <div class="filter">
+            <a href="/listings/category/Farm" class="filter-link">
+                <i class="fa-solid fa-cow"></i>
+                <p>Farm</p>
+            </a>
+        </div>
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- Listings Section -->
 <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-4">
-  <% for(let listing of allListings) { %>
-      <div class="col">
-          <a href="/listings/<%= listing._id %>" class="listing-link">
-              <div class="card" style="width: 100%;">
-                  <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
-                  <div class="card-img-overlay"></div>
-                  <div class="card-body">
-                      <p class="card-text">
-                          <b><%= listing.title %></b><br>
-                          &#8377; <span class="price" data-price="<%= listing.price %>"><%=listing.price.toLocaleString("en-IN")%></span> / night
-                      </p>
-                  </div>
-              </div>
-          </a>
-      </div>
-  <% } %>
+    <% for(let listing of allListings) { %>
+        <div class="col">
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+                <div class="card" style="width: 100%;">
+                    <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b><%= listing.title %></b><br>
+                            &#8377; <span class="price" data-price="<%= listing.price %>"><%=listing.price.toLocaleString("en-IN")%></span> / night
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    <% } %>
 </div>
 
-<!-- Script for handling the tax toggle -->
+<!-- Script for handling the tax toggle and scroll position -->
 <script>
 document.getElementById('flexSwitchCheckDefault').addEventListener('change', function () {
     const prices = document.querySelectorAll('.price');
@@ -101,5 +103,10 @@ document.getElementById('flexSwitchCheckDefault').addEventListener('change', fun
             priceElement.innerText = basePrice.toLocaleString("en-IN");
         }
     });
+});
+
+window.addEventListener('load', function() {
+    const filtersContainer = document.getElementById('filters-container');
+    filtersContainer.scrollLeft = 0; // Set scroll position to the start
 });
 </script>
