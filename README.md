@@ -1,7 +1,8 @@
-![Screenshot (81)](https://github.com/user-attachments/assets/1e2e5bc2-97fb-43c9-a013-a5f475c0b5a0)
+
 
 # FindAStay
 
+![Screenshot (81)](https://github.com/user-attachments/assets/1e2e5bc2-97fb-43c9-a013-a5f475c0b5a0)
 
 ## Description
 I'm excited to share my latest project, **FindAStay**, a full-stack web application that allows users to explore and book unique accommodations around the world.
